@@ -1,7 +1,7 @@
 import { IProduct } from "../interfaces/IProduct";
 import { ProductDto } from "../dto/Product.Dto";
 
-const productsArray: IProduct[] = [];
+let productsArray: IProduct[] = [];
 
 let id: number = 1;
 
@@ -25,8 +25,14 @@ export const createProductService = async (
   return newProduct;
 };
 
-export const getProductsService = async () => {};
+export const getProductsService = async (): Promise<IProduct[]> => {
+  return productsArray;
+};
 
-export const deleteProductService = async () => {};
+export const deleteProductService = async (id: number): Promise<void> => {
+  productsArray = productsArray.filter(
+    (product: IProduct) => product.id !== id
+  );
+};
 
 export const editProductsService = async () => {};

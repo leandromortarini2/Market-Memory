@@ -18,8 +18,16 @@ export const createProduct = async (req: Request, res: Response) => {
   res.status(201).json(newProduct);
 };
 
-export const getProducts = async () => {};
+export const getProducts = async (req: Request, res: Response) => {
+  const products: IProduct[] = await getProductsService();
 
-export const deleteProduct = async () => {};
+  res.status(200).json(products);
+};
+
+export const deleteProduct = async (req: Request, res: Response) => {
+  const { id } = req.body;
+  await deleteProductService(id);
+  res.status(200).json({ message: "Eliminado correctamente" });
+};
 
 export const editProducts = async () => {};

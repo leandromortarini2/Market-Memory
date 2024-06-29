@@ -10,10 +10,10 @@ const router: Router = Router();
 
 router.post("/products", createProduct);
 
-router.get("/products");
+router.get("/products", getProducts);
 
-router.delete("/products");
+router.delete("/products", deleteProduct);
 
-router.put("/products");
+router.put("/products", editProducts);
 
 export default router;
