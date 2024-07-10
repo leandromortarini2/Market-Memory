@@ -1,11 +1,14 @@
 import { Router } from "express";
 import {
   editProducts,
-  createUser,
-  getUsers,
-  getUserID,
   createProduct,
+  getProducts,
 } from "../controllers/productsControllers";
+import {
+  createUser,
+  getUserID,
+  getUsers,
+} from "../controllers/userControllers";
 
 const router: Router = Router();
 
@@ -18,7 +21,7 @@ router.post("/users/register", createUser);
 router.get("/users/:id", getUserID);
 
 // PRODUCTOS
-// router.get("/products", getProducts);
+router.get("/products", getProducts);
 
 router.post("/products", createProduct);
 
