@@ -1,95 +1,49 @@
 import { IProduct, IUser } from "../interfaces/IProduct";
-import { ProductDto } from "../dto/Product.Dto";
 import { AppDataSource } from "../config/data-source";
-import { User } from "../entities/entities";
+import { Product, User } from "../entities/entities";
 
-// ?SERVICIO PARA CREAR NUEVO USUARIO
-const userRepository = AppDataSource.getRepository(User);
+//! SERVICIO PARA CREAR PRODUCTO
 
-export const createUserService = async (
+const productRepository = AppDataSource.getRepository(Product);
+
+export const createProductService = async (
   name: string,
-  email: string,
-  password: string
-): Promise<IUser> => {
+  type: string,
+  quantity: number
+): Promise<IProduct> => {
   try {
-    // Creación de la instancia del nuevo usuario
-    const newUser = userRepository.create({
+    const newProduct: IProduct = productRepository.create({
       name,
-      email,
-      password,
+      type,
+      quantity,
     });
 
-    // Guardado del usuario en la base de datos
-    await userRepository.save(newUser);
+    // Guardar el nuevo producto en la base de datos
+    await productRepository.save(newProduct);
 
-    return newUser;
+    return newProduct;
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Error creating user: ${error.message}`);
+      throw new Error(`Error crear un nuevo producto: ${error.message}`);
     } else {
-      throw new Error("Unknown error creating user");
+      throw new Error("Error desconocido al crear el producto");
     }
   }
 };
 
-// ?SERVICIO PARA TRAER TODOS LOS USUARIOS
-export const getUserService = async () => {
+export const getProductsService = async (): Promise<IProduct[]> => {
   try {
-    const userRepository = AppDataSource.getRepository(User);
-    const users = await userRepository.find();
-    return users;
-  } catch (error: unknown) {
+    const productsArray: IProduct[] = await productRepository.find();
+
+    return productsArray;
+  } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Error retrieving users: ${error.message}`);
+      throw new Error(`Error al traer todos los producto: ${error.message}`);
     } else {
-      throw new Error("An unexpected error occurred");
+      throw new Error("Error desconocido al traer los productos");
     }
   }
 };
-
-// ?SERVICIO PARA TRAER UN USUARIO POR ID
-
-export const getUserIDService = async (id: number) => {
-  try {
-    const userRepository = AppDataSource.getRepository(User);
-    const user = await userRepository.findOneBy({ id: id });
-
-    if (!user) {
-      throw new Error(`User with ID ${id} not found`);
-    }
-
-    return user;
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      throw new Error(`Error retrieving user: ${error.message}`);
-    } else {
-      throw new Error("An unexpected error occurred");
-    }
-  }
-};
-
-// //? SERVICIO PARA CREAR PRODUCTO
-
-// export const createProductService = async (
-//   productData: ProductDto
-// ): Promise<IProduct> => {
-//   const newProduct: IProduct = {
-//     name: productData.name,
-//     type: productData.type,
-//     active: productData.active,
-//   };
-//   id++;
-//   productsArray.push(newProduct);
-//   // recibir los datos del usuario
-//   // crear un nuevo usuario
-//   // incluir el nuevo usuario dentro del arreglo
-//   // retornarlo
-//   return newProduct;
-// };
-
-// export const getProductsService = async (): Promise<IProduct[]> => {
-//   return productsArray;
-// };
 
 // export const deleteProductService = async (id: number): Promise<void> => {
 //   productsArray = productsArray.filter(
