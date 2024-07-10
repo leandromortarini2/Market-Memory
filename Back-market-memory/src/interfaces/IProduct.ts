@@ -2,7 +2,7 @@ export interface IProduct {
   id: number;
   name: string;
   type: string;
-  active: boolean;
+  quantity: number;
 }
 
 export interface IUser {

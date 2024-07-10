@@ -3,6 +3,7 @@ import {
   createUserService,
   getUserService,
   getUserIDService,
+  createProductService,
 } from "../services/productsServices";
 import { IProduct, IUser } from "../interfaces/IProduct";
 import { ProductDto } from "../dto/Product.Dto";
@@ -75,15 +76,20 @@ export const getUserID = async (req: Request, res: Response) => {
   }
 };
 
-// export const createProduct = async (req: Request, res: Response) => {
-//   const { name, type, active } = req.body;
-//   const newProduct: IProduct = await createProductService({
-//     name,
-//     type,
-//     active,
-//   });
-//   res.status(201).json(newProduct);
-// };
+export const createProduct = async (req: Request, res: Response) => {
+  try {
+    const { name, type, quantity } = req.body; // Extraer datos del cuerpo de la solicitud
+
+    // Llamar al servicio para crear el producto
+    const product = await createProductService(name, type, quantity);
+
+    res.status(201).json(product); // Respondemos con el producto creado y código de estado HTTP 201 (creado)
+  } catch (error) {
+    console.error("Error creating product:", error); // Registrar el error en la consola para debug
+
+    res.status(500).json({ message: "Error creating product" }); // Respondemos con un mensaje de error genérico y código de estado HTTP 500 (error interno del servidor)
+  }
+};
 
 // export const getProducts = async (req: Request, res: Response) => {
 //   const products: IProduct[] = await getProductsService();

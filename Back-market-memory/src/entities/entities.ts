@@ -28,7 +28,4 @@ export class Product {
 
   @Column("integer")
   quantity: number;
-
-  @Column()
-  importance: boolean;
 }

@@ -1,7 +1,7 @@
 import { IProduct, IUser } from "../interfaces/IProduct";
 import { ProductDto } from "../dto/Product.Dto";
 import { AppDataSource } from "../config/data-source";
-import { User } from "../entities/entities";
+import { Product, User } from "../entities/entities";
 
 // ?SERVICIO PARA CREAR NUEVO USUARIO
 const userRepository = AppDataSource.getRepository(User);
@@ -70,22 +70,32 @@ export const getUserIDService = async (id: number) => {
 
 // //? SERVICIO PARA CREAR PRODUCTO
 
-// export const createProductService = async (
-//   productData: ProductDto
-// ): Promise<IProduct> => {
-//   const newProduct: IProduct = {
-//     name: productData.name,
-//     type: productData.type,
-//     active: productData.active,
-//   };
-//   id++;
-//   productsArray.push(newProduct);
-//   // recibir los datos del usuario
-//   // crear un nuevo usuario
-//   // incluir el nuevo usuario dentro del arreglo
-//   // retornarlo
-//   return newProduct;
-// };
+const productRepository = AppDataSource.getRepository(Product);
+
+export const createProductService = async (
+  name: string,
+  type: string,
+  quantity: number
+) => {
+  try {
+    const newProduct = productRepository.create({
+      name,
+      type,
+      quantity,
+    });
+
+    // Guardar el nuevo producto en la base de datos
+    await productRepository.save(newProduct);
+
+    return newProduct;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Error creating product: ${error.message}`);
+    } else {
+      throw new Error("Unknown error creating product");
+    }
+  }
+};
 
 // export const getProductsService = async (): Promise<IProduct[]> => {
 //   return productsArray;

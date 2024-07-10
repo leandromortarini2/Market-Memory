@@ -4,20 +4,23 @@ import {
   createUser,
   getUsers,
   getUserID,
+  createProduct,
 } from "../controllers/productsControllers";
 
 const router: Router = Router();
+
+// USUARIOS
 
 router.get("/users", getUsers);
 
 router.post("/users/register", createUser);
 
 router.get("/users/:id", getUserID);
-// PRODUCT
 
+// PRODUCTOS
 // router.get("/products", getProducts);
 
-// router.post("/products", createProduct);
+router.post("/products", createProduct);
 
 // router.delete("/products", deleteProduct);
 
