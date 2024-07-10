@@ -2,15 +2,17 @@ import { Router } from "express";
 import {
   editProducts,
   createUser,
-  getUser,
+  getUsers,
+  getUserID,
 } from "../controllers/productsControllers";
 
 const router: Router = Router();
 
-router.get("/users", getUser);
+router.get("/users", getUsers);
 
 router.post("/users/register", createUser);
 
+router.get("/users/:id", getUserID);
 // PRODUCT
 
 // router.get("/products", getProducts);
