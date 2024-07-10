@@ -33,7 +33,10 @@ export const createUserService = async (
 };
 
 // ?SERVICIO PARA TRAER UN USUARIO POR ID
-export const getUserService = () => {};
+export const getUserService = () => {
+  const users = userRepository.find();
+  return users;
+};
 
 // //? SERVICIO PARA CREAR PRODUCTO
 

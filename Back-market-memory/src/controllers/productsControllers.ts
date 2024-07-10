@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
-import { createUserService } from "../services/productsServices";
+import {
+  createUserService,
+  getUserService,
+} from "../services/productsServices";
 import { IProduct, IUser } from "../interfaces/IProduct";
 import { ProductDto } from "../dto/Product.Dto";
 
@@ -28,10 +31,11 @@ export const createUser = async (req: Request, res: Response) => {
     }
   }
 };
-// export const getUser = async (req: Request, res: Response) => {
-//   const users: IUser[] = await getUserService();
-//   res.status(200).json(users);
-// };
+
+export const getUser = async (req: Request, res: Response) => {
+  const users: IUser[] = await getUserService();
+  res.status(200).json(users);
+};
 
 // export const createProduct = async (req: Request, res: Response) => {
 //   const { name, type, active } = req.body;

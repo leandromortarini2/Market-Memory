@@ -1,9 +1,13 @@
 import { Router } from "express";
-import { editProducts, createUser } from "../controllers/productsControllers";
+import {
+  editProducts,
+  createUser,
+  getUser,
+} from "../controllers/productsControllers";
 
 const router: Router = Router();
 
-// router.get("/users", getUser);
+router.get("/users", getUser);
 
 router.post("/users/register", createUser);
 
