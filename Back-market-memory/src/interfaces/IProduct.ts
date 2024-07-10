@@ -4,3 +4,10 @@ export interface IProduct {
   type: string;
   active: boolean;
 }
+
+export interface IUser {
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+}
