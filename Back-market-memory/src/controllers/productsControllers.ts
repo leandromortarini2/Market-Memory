@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import {
   createProductService,
+  deleteProductService,
   getProductIDService,
   getProductsService,
 } from "../services/productsServices";
@@ -26,7 +27,7 @@ export const createProduct = async (req: Request, res: Response) => {
 };
 
 // TODOS LOS PRODUCTOS
-// TODOS LOS PRODUCTOS
+// TODOS LOS PRODUCTOs
 // TODOS LOS PRODUCTOS
 
 export const getProducts = async (req: Request, res: Response) => {
@@ -64,10 +65,26 @@ export const getProductID = async (req: Request, res: Response) => {
   }
 };
 
-// export const deleteProduct = async (req: Request, res: Response) => {
-//   const { id } = req.body;
-//   await deleteProductService(id);
-//   res.status(200).json({ message: "Eliminado correctamente" });
-// };
+// BORRAR UN PRODUCTO POR ID
+// BORRAR UN PRODUCTO POR ID
+// BORRAR UN PRODUCTO POR ID
+export const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
 
-// export const editProducts = async () => {};
+    const productDelete = await deleteProductService(Number(id));
+
+    res.status(200).json(productDelete);
+  } catch (error) {
+    console.error("Error al eliminar el producto:", error);
+    res.status(500).json({ message: "Error interno del servidor" });
+  }
+};
+
+// EDITAR UN PRODUCTO POR ID
+// EDITAR UN PRODUCTO POR ID
+// EDITAR UN PRODUCTO POR ID
+
+// BORRAR TODOS LOS PRODUCTOS
+// BORRAR TODOS LOS PRODUCTOS
+// BORRAR TODOS LOS PRODUCTOS
