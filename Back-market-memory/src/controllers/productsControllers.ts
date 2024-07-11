@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import {
   createProductService,
+  getProductIDService,
   getProductsService,
 } from "../services/productsServices";
 import { IProduct } from "../interfaces/IProduct";
@@ -42,10 +43,31 @@ export const getProducts = async (req: Request, res: Response) => {
   }
 };
 
+// TRAER UN PRODUCTO POR ID
+// TRAER UN PRODUCTO POR ID
+// TRAER UN PRODUCTO POR ID
+
+export const getProductID = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const product = await getProductIDService(Number(id));
+
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    res.status(200).json(product);
+  } catch (error) {
+    console.error("Error al traer el producto:", error);
+    res.status(500).json({ message: "Error interno del servidor" });
+  }
+};
+
 // export const deleteProduct = async (req: Request, res: Response) => {
 //   const { id } = req.body;
 //   await deleteProductService(id);
 //   res.status(200).json({ message: "Eliminado correctamente" });
 // };
 
-export const editProducts = async () => {};
+// export const editProducts = async () => {};

@@ -38,17 +38,29 @@ export const getProductsService = async (): Promise<IProduct[]> => {
     return productsArray;
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Error al traer todos los producto: ${error.message}`);
+      throw new Error(`Error al traer todos los productos: ${error.message}`);
     } else {
       throw new Error("Error desconocido al traer los productos");
     }
   }
 };
 
+export const getProductIDService = async (id: number) => {
+  try {
+    const product = await productRepository.findOneBy({ id: id });
+
+    return product;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Error al traer el producto: ${error.message}`);
+    } else {
+      throw new Error("Error desconocido al traer el producto");
+    }
+  }
+};
+
 // export const deleteProductService = async (id: number): Promise<void> => {
-//   productsArray = productsArray.filter(
-//     (product: IProduct) => product.id !== id
-//   );
+//   const
 // };
 
 // export const editProductsService = async () => {};
