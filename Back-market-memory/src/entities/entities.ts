@@ -20,7 +20,7 @@ export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 10 })
+  @Column({ length: 50 })
   name: string;
 
   @Column({ length: 50 })
