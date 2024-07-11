@@ -2,7 +2,9 @@ import { IProduct, IUser } from "../interfaces/IProduct";
 import { AppDataSource } from "../config/data-source";
 import { Product, User } from "../entities/entities";
 
-//! SERVICIO PARA CREAR PRODUCTO
+// SERVICIO PARA CREAR PRODUCTO
+// SERVICIO PARA CREAR PRODUCTO
+// SERVICIO PARA CREAR PRODUCTO
 
 const productRepository = AppDataSource.getRepository(Product);
 
@@ -31,6 +33,10 @@ export const createProductService = async (
   }
 };
 
+// TRAER TODOS LOS PRODUCTOS
+// TRAER TODOS LOS PRODUCTOS
+// TRAER TODOS LOS PRODUCTOS
+
 export const getProductsService = async (): Promise<IProduct[]> => {
   try {
     const productsArray: IProduct[] = await productRepository.find();
@@ -44,6 +50,10 @@ export const getProductsService = async (): Promise<IProduct[]> => {
     }
   }
 };
+
+// TRAER UN PRODUCTO
+// TRAER UN PRODUCTO
+// TRAER UN PRODUCTO
 
 export const getProductIDService = async (id: number) => {
   try {
@@ -59,6 +69,10 @@ export const getProductIDService = async (id: number) => {
   }
 };
 
+// BORRAR UN PRODUCTO
+// BORRAR UN PRODUCTO
+// BORRAR UN PRODUCTO
+
 export const deleteProductService = async (id: number) => {
   try {
     const product = await productRepository.delete({ id: id });
@@ -73,4 +87,30 @@ export const deleteProductService = async (id: number) => {
   }
 };
 
-// export const editProductsService = async () => {};
+// EDITAR UN PRODUCTO
+// EDITAR UN PRODUCTO
+// EDITAR UN PRODUCTO
+
+export const editProductsService = async (prop: IProduct) => {
+  try {
+    const { id, name, type, quantity } = prop;
+
+    // Verificar si el producto existe
+    const existingProduct = await productRepository.findOneBy({ id });
+    if (!existingProduct) {
+      throw new Error(`Producto con ID ${id} no encontrado`);
+    }
+    // Editar el producto
+    await productRepository.update({ id }, { name, type, quantity });
+
+    // Retornar el producto actualizado
+    const updatedProduct = await productRepository.findOneBy({ id });
+    return updatedProduct;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Error al editar el producto: ${error.message}`);
+    } else {
+      throw new Error("Error desconocido al editar el producto");
+    }
+  }
+};

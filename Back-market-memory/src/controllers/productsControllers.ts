@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   createProductService,
   deleteProductService,
+  editProductsService,
   getProductIDService,
   getProductsService,
 } from "../services/productsServices";
@@ -84,6 +85,33 @@ export const deleteProduct = async (req: Request, res: Response) => {
 // EDITAR UN PRODUCTO POR ID
 // EDITAR UN PRODUCTO POR ID
 // EDITAR UN PRODUCTO POR ID
+
+export const editProduct = async (req: Request, res: Response) => {
+  try {
+    const { id, name, type, quantity } = req.body;
+
+    // Validación básica de entrada
+    if (!id || !name || !type || !quantity) {
+      return res
+        .status(400)
+        .json({ message: "Todos los campos son requeridos" });
+    }
+    const numericId = Number(id);
+
+    const product = { id: numericId, name, type, quantity };
+
+    const productEdit = await editProductsService(product);
+
+    if (!productEdit) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    res.status(202).json(productEdit);
+  } catch (error) {
+    console.error("Error al editar el producto:", error);
+    res.status(500).json({ message: "Error interno del servidor" });
+  }
+};
 
 // BORRAR TODOS LOS PRODUCTOS
 // BORRAR TODOS LOS PRODUCTOS
