@@ -75,9 +75,9 @@ export const getProductIDService = async (id: number) => {
 
 export const deleteProductService = async (id: number) => {
   try {
-    const product = await productRepository.delete({ id: id });
+    await productRepository.delete({ id: id });
 
-    return true;
+    return { message: "El producto han sido eliminados" };
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(`Error al ELIMINAR el producto: ${error.message}`);
@@ -111,6 +111,24 @@ export const editProductsService = async (prop: IProduct) => {
       throw new Error(`Error al editar el producto: ${error.message}`);
     } else {
       throw new Error("Error desconocido al editar el producto");
+    }
+  }
+};
+
+// BORRAR TODOS LOS PRODUCTOS
+// BORRAR TODOS LOS PRODUCTOS
+// BORRAR TODOS LOS PRODUCTOS
+
+export const deleteAllProductsService = async () => {
+  try {
+    await productRepository.query("DELETE FROM products");
+
+    return { message: "Todos los productos han sido eliminados" };
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Error al eliminar los productos: ${error.message}`);
+    } else {
+      throw new Error("Error desconocido al eliminar los productos");
     }
   }
 };

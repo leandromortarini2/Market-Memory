@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import {
   createProductService,
+  deleteAllProductsService,
   deleteProductService,
   editProductsService,
   getProductIDService,
@@ -73,9 +74,9 @@ export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const productDelete = await deleteProductService(Number(id));
+    const result = await deleteProductService(Number(id));
 
-    res.status(200).json(productDelete);
+    res.status(200).json(result);
   } catch (error) {
     console.error("Error al eliminar el producto:", error);
     res.status(500).json({ message: "Error interno del servidor" });
@@ -109,10 +110,21 @@ export const editProduct = async (req: Request, res: Response) => {
     res.status(202).json(productEdit);
   } catch (error) {
     console.error("Error al editar el producto:", error);
-    res.status(500).json({ message: "Error interno del servidor" });
+    res.status(400).json({ message: "Error interno del servidor" });
   }
 };
 
 // BORRAR TODOS LOS PRODUCTOS
 // BORRAR TODOS LOS PRODUCTOS
 // BORRAR TODOS LOS PRODUCTOS
+
+export const deleteAllProducts = async (req: Request, res: Response) => {
+  try {
+    const result = await deleteAllProductsService();
+
+    res.status(200).json(result);
+  } catch (error) {
+    console.error("Error al eliminar todos los productos:", error);
+    res.status(400).json({ message: "Error interno del servidor" });
+  }
+};
