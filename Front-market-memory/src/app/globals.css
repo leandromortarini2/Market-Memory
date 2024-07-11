@@ -2,32 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
+.imgPortada {
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgba(255, 251, 251, 0.25),
+      rgba(255, 251, 251, 0.25)
+    ),
+    url("https://img.freepik.com/foto-gratis/encimera-madera-vacia-ofrece-escenario-pristino-creacion-culinaria-banada-luz-natural_91128-4365.jpg?t=st=1720730838~exp=1720734438~hmac=9efd9aa7ef9f316cbf6011938f8d178a2528cd95e89bae07a39a3224b9a2c9d8&w=1380");
+  background-size: cover;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+#sec1,
+#sec2,
+#sec3 {
+  scroll-margin-top: 22rem; /* Ajusta este valor según la altura del NavBar */
 }
