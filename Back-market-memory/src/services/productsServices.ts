@@ -59,8 +59,18 @@ export const getProductIDService = async (id: number) => {
   }
 };
 
-// export const deleteProductService = async (id: number): Promise<void> => {
-//   const
-// };
+export const deleteProductService = async (id: number) => {
+  try {
+    const product = await productRepository.delete({ id: id });
+
+    return true;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Error al ELIMINAR el producto: ${error.message}`);
+    } else {
+      throw new Error("Error desconocido al ELIMINAR el producto");
+    }
+  }
+};
 
 // export const editProductsService = async () => {};
