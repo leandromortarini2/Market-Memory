@@ -3,7 +3,16 @@
 @tailwind utilities;
 
 .imgPortada {
-  background: linear-gradient(to right, rgba(14, 13, 13, 0.9), rgba(1, 1, 1, 0)),
+  background: linear-gradient(to right, rgba(14, 13, 13, 0), rgba(1, 1, 1, 0)),
+    url("../assent/habitacion-moderna-vacia-muebles_23-2149178335.jpg");
+  background-size: cover;
+}
+.imgPortada2 {
+  background: linear-gradient(
+      to right,
+      rgba(255, 254, 254, 0.6),
+      rgba(252, 251, 251, 0.6)
+    ),
     url("../assent/habitacion-moderna-vacia-muebles_23-2149178335.jpg");
   background-size: cover;
 }
@@ -15,9 +24,18 @@
 }
 
 .containerMain {
-  background: linear-gradient(rgba(20, 1, 1, 0.3), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(rgba(20, 1, 1, 0.7), rgba(0, 0, 0, 0.7));
 }
 
 .ShadowEffect2 {
-  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.58));
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));
+}
+
+.imgEffectLeft {
+  -webkit-mask-image: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.716),
+    transparent
+  );
+  mask-image: linear-gradient(to left, black, transparent);
 }
