@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   password: "13g99190",
   database: "market",
   synchronize: true,
-  // dropSchema:true,
+  // dropSchema: true,
   logging: false,
   entities: [User, Product],
   subscribers: [],
