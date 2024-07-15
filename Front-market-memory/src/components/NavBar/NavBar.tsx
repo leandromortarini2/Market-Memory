@@ -57,7 +57,7 @@ export const NavBar = () => {
       </div>
 
       {burger === true ? (
-        <div className="w-full h-72 z-30 flex flex-col justify-evenly items-end fixed md:hidden ">
+        <div className="w-full h-72 z-30 flex flex-col justify-evenly items-end fixed lg:hidden ">
           <div className="w-1/2 h-52 flex flex-col justify-evenly items-end p-10 bg-gray-100 ShadowEffect2">
             <Link href="#sec1">
               <button className="text-xl text-gray-800  font-semibold hover:text-green-600">
