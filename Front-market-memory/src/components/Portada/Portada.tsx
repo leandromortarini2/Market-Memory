@@ -46,27 +46,27 @@ export const Portada = () => {
         className="w-full min-h-screen imgPortada2 flex flex-col justify-center items-center md:hidden  "
       >
         <div className=" w-full h-80  flex flex-col justify-evenly items-center  ">
-          <h2 className="text-3xl  text-gray-500 font-bold  capitalize">
+          <h2 className="text-2xl  text-gray-500 font-bold  capitalize">
             welcome
           </h2>
           <div className="w-full flex justify-center md:justify-start ">
             {" "}
-            <h1 className=" text-4xl  text-gray-800 font-bold  ">
+            <h1 className=" text-3xl  text-gray-800 font-bold  ">
               Market
               <span className="text-green-500">|Memory</span>
             </h1>{" "}
-            <Image src={Logo} alt="" className="w-14 md:w-20 lg:w-28 xl:w-32" />
+            <Image src={Logo} alt="" className="w-10 md:w-20 lg:w-28 xl:w-32" />
           </div>
 
           <div className=" ">
-            <p className="text-gray-600 text-xl  font-semibold capitalize  text-center ">
+            <p className="text-gray-600 text-lg  font-semibold capitalize  text-center ">
               Never forget anything again, everything in its place, always
               within your reach.
             </p>
           </div>
           <div className="w-full  flex justify-center md:justify-start mt-5">
             <Link href="#sec3">
-              <button className="w-32 xl:w-40 bg-green-500 p-2 rounded-xl text-gray-100 text-lg font-bold md:text-xl lg:text-2xl xl:text-3xl  capitalize  hover:bg-green-700 ">
+              <button className="w-28  bg-green-500 p-1 rounded-xl text-gray-100 text-lg font-bold md:text-xl lg:text-2xl xl:text-3xl  capitalize  hover:bg-green-700 ">
                 my list
               </button>
             </Link>
