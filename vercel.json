@@ -2,11 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "Front-market-memory/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "Front-market-memory/build"
-      }
+      "src": "Front-market-memory/next.config.js",
+      "use": "@vercel/next"
     }
   ],
   "routes": [
