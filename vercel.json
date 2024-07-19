@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Front-market-memory/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "Front-market-memory/build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/Front-market-memory/$1"
+    }
+  ]
+}
