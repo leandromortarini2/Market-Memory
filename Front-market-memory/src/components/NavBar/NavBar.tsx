@@ -24,7 +24,7 @@ export const NavBar = () => {
           </Link>
           <a href="#sec2">
             <button className="text-2xl text-gray-700 font-bold hover:text-green-500 ">
-              Add Product
+              About
             </button>
           </a>
           <Link href="#sec3">
@@ -36,7 +36,7 @@ export const NavBar = () => {
         <div className="w-1/4 flex justify-center">
           <Link href="#sec3">
             <button className="text-2xl text-gray-700 font-bold hover:text-green-500 ">
-              LogIn{" "}
+              LogIn
             </button>
           </Link>
         </div>
@@ -66,7 +66,7 @@ export const NavBar = () => {
             </Link>
             <a href="#sec2">
               <button className="text-xl text-gray-800  font-semibold hover:text-green-600">
-                Add Product
+                About
               </button>
             </a>
             <Link href="#sec3">

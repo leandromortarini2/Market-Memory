@@ -39,7 +39,10 @@ const Form: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center bg-white ShadowEffect2">
+    <div
+      id="#sec3"
+      className="w-full flex flex-col justify-center items-center bg-white ShadowEffect2"
+    >
       <form
         onSubmit={handleOnSubmit}
         action=""
